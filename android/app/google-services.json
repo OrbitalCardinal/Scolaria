@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "498322613754",
+    "firebase_url": "https://scolaria-44ae1.firebaseio.com",
+    "project_id": "scolaria-44ae1",
+    "storage_bucket": "scolaria-44ae1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:498322613754:android:b3fe5aa820265a8afff043",
+        "android_client_info": {
+          "package_name": "com.example.Scolaria"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "498322613754-gitjr8o2mokad9jt07b39m4ntv8c3c8p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQGEZTN4I3ULUBSsp-ehI3SIIUMIdt87s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "498322613754-gitjr8o2mokad9jt07b39m4ntv8c3c8p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
