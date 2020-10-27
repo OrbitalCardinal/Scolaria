@@ -25,23 +25,48 @@ class ParentStart extends StatelessWidget {
                 indicatorWeight: 2,
                 tabs: [
                   Tab(
-                    child: Icon(
-                      Icons.notifications,
+                    child: Column(
+                      children: [
+                        SizedBox(height: 2,),
+                        Icon(
+                          Icons.notifications,
+                        ),
+                        Text('Avisos')
+                      ],
+                    ),
+                    // text: 'Avisos',
+                  ),
+                  Tab(
+                    child: Column(
+                      children: [
+                        SizedBox(height: 2,),
+                        Icon(
+                          Icons.book,
+                        ),
+                        Text('Historial')
+                      ],
                     ),
                   ),
                   Tab(
-                    child: Icon(
-                      Icons.book,
+                    child: Column(
+                      children: [
+                        SizedBox(height: 2,),
+                        Icon(
+                          Icons.grade,
+                        ),
+                        Text('Materias')
+                      ],
                     ),
                   ),
                   Tab(
-                    child: Icon(
-                      Icons.grade,
-                    ),
-                  ),
-                  Tab(
-                      child: Icon(
-                    Icons.person,
+                      child: Column(
+                    children: [
+                      SizedBox(height: 2,),
+                      Icon(
+                        Icons.person,
+                      ),
+                      Text('Perfil')
+                    ],
                   )),
                 ],
               ),
