@@ -1,5 +1,3 @@
-
-
 import 'package:Scolaria/parents/avisos.dart';
 import 'package:Scolaria/parents/informacion.dart';
 import 'package:Scolaria/parents/materias.dart';
@@ -16,45 +14,38 @@ class ParentStart extends StatelessWidget {
     return DefaultTabController(
       length: 4,
       child: Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
-        appBar: AppBar(
-          flexibleSpace: SafeArea(
-            child: Theme(
-              data: ThemeData(
-                splashColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-              ),
+        // backgroundColor: Theme.of(context).backgroundColor,
+        appBar: PreferredSize(
+          preferredSize: Size(double.infinity, 47),
+          child: AppBar(
+            backgroundColor: Colors.orange[500],
+            flexibleSpace: SafeArea(
               child: TabBar(
-                indicatorColor: Colors.transparent,
-                labelColor: Colors.orange,
-                unselectedLabelColor: Theme.of(context).backgroundColor,
+                indicatorColor: Colors.white,
+                indicatorWeight: 2,
                 tabs: [
                   Tab(
                     child: Icon(
-                      Icons.home,
+                      Icons.notifications,
                     ),
                   ),
                   Tab(
                     child: Icon(
-                      Icons.lock_clock
+                      Icons.book,
                     ),
                   ),
                   Tab(
                     child: Icon(
-                      Icons.book
+                      Icons.grade,
                     ),
                   ),
                   Tab(
-                    child: Icon(
-                      Icons.person
-                    )
-                  ),
+                      child: Icon(
+                    Icons.person,
+                  )),
                 ],
               ),
             ),
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(bottom: Radius.circular(25)),
           ),
         ),
         body: TabBarView(children: [

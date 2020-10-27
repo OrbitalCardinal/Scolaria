@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 class Materias extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return Scaffold(
+      body: Center(child: Text("Materias - Calificaciones"),)
     );
   }
 }

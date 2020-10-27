@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.white,
         resizeToAvoidBottomInset: false,
         // body: RegisterBody()
-        body: LoginBackground(),
+        body: ParentStart(),
         );
   }
 }
