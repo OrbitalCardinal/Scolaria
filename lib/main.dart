@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'widgets/loginBackground.dart';
+import 'package:Scolaria/parents/parent_start.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
