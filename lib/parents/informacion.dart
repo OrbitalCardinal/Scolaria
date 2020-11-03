@@ -1,7 +1,6 @@
 import 'package:Scolaria/parents/models/loan.dart';
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
 class Info extends StatelessWidget {
   
   final GlobalKey<AnimatedListState> _key = GlobalKey();
@@ -18,22 +17,7 @@ class Info extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: AnimatedList(
-          key: _key,
-          initialItemCount: _items.length,
-          itemBuilder: (context, index, animation){
-            return _buildItem(_items[index], animation,index);
-          },
-        ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          backgroundColor: Colors.orange[500],
-          onPressed: () => _addItem(),
-        ),
-      //floatingActionButton: FloatingActionButton(
-      //backgroundColor: Colors.orange,
-      //child: Icon(Icons.add),
-    //));
+      body: Center(child: Text("Informacion"))
     );
   }
   Widget _buildItem(String item, Animation animation, int index){
