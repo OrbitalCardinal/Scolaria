@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class HomePage extends StatelessWidget {
   final String loggedEmail;
   HomePage(this.loggedEmail);
+  //static List<Loan> tempLoans = [];
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(

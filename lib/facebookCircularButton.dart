@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'facebook_icon.dart';
-import 'google_icon.dart';
 
 class FacebookCircularButton extends StatelessWidget {
 

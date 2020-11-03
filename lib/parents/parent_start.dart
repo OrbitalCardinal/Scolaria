@@ -1,6 +1,7 @@
+import 'package:Scolaria/parents/Student.dart';
 import 'package:Scolaria/parents/avisos.dart';
-import 'package:Scolaria/parents/informacion.dart';
 import 'package:Scolaria/parents/materias.dart';
+import 'package:Scolaria/parents/models/loan.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -8,6 +9,7 @@ import 'package:Scolaria/parents/inicio.dart';
 
 class ParentStart extends StatelessWidget {
   static const routeName = 'parent_start';
+   static List<Loan> tempLoans = [];
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +79,7 @@ class ParentStart extends StatelessWidget {
           InicioPadre(),
           Aviso(),
           Materias(),
-          Info(),
+          Student(),
         ]),
       ),
     );

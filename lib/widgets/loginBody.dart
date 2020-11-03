@@ -96,7 +96,7 @@ class _LoginBodyState extends State<LoginBody> {
                             .then((user) {
                           if (user.user.emailVerified) {
                             Navigator.of(context).push(
-                                MaterialPageRoute(builder: (_LoginBodyState) {
+                                MaterialPageRoute(builder: (_loginBodyState) {
                               return HomePage(emailController.text);
                             }));
                           } else {
