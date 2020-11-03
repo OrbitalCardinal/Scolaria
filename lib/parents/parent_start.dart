@@ -29,9 +29,9 @@ class ParentStart extends StatelessWidget {
                       children: [
                         SizedBox(height: 2,),
                         Icon(
-                          Icons.notifications,
+                          Icons.book,
                         ),
-                        Text('Avisos')
+                        Text('Historial')
                       ],
                     ),
                     // text: 'Avisos',
@@ -41,9 +41,9 @@ class ParentStart extends StatelessWidget {
                       children: [
                         SizedBox(height: 2,),
                         Icon(
-                          Icons.book,
+                          Icons.notifications,
                         ),
-                        Text('Historial')
+                        Text('Avisos')
                       ],
                     ),
                   ),

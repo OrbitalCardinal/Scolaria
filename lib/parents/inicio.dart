@@ -3,10 +3,10 @@
 import 'package:flutter/material.dart';
 
 class InicioPadre extends StatelessWidget {
-  @override
+@override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text("Avisos"),)
+      body: Center(child: Text("Inicio de Pantalla"),)
     );
   }
 }
