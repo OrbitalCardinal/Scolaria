@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:Scolaria/parents/parent_start.dart';
 
+import 'teachers/main_teachers_screen.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -39,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.white,
         resizeToAvoidBottomInset: false,
         // body: RegisterBody()
-        body: ParentStart(),
+        body: MainTeachersScreen(),
         );
   }
 }
