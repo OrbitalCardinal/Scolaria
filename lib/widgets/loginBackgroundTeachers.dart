@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'loginBodyTeachers.dart';
 
-import 'loginBody.dart';
-
-class LoginBackground extends StatelessWidget {
-  static const routeName = "/";
+class LoginBackgroundTeachers extends StatelessWidget {
+  static const routeName = "/teachers-login";
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -29,7 +28,7 @@ class LoginBackground extends StatelessWidget {
                 width: size.width,
               ),
             ),
-            LoginBody(),
+            LoginBodyTeachers(),
           ],
         ),
       ),

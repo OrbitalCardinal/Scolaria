@@ -1,3 +1,4 @@
+import 'package:Scolaria/widgets/loginBackground.dart';
 import 'package:flutter/material.dart';
 
 import 'registerBody.dart';
@@ -22,9 +23,7 @@ class NoAccountRegister extends StatelessWidget {
             style: TextStyle(fontSize: 18, color: Colors.deepOrange[400], fontFamily: "Alatsi"),
           ),
           onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-              return RegisterBody();
-            }));
+            Navigator.of(context).pushReplacementNamed(LoginBackground.routeName);
           },
         ),
       ],

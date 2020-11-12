@@ -1,21 +1,16 @@
+import 'package:Scolaria/widgets/loginBackgroundTeachers.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import '../facebookCircularButton.dart';
-import '../googleCircularButton.dart';
-import 'DividerAuth.dart';
-import 'accountLogIn.dart';
-import 'loginBackground.dart';
 import 'textLogo.dart';
 
-class RegisterBody extends StatefulWidget {
-  static const routeName = '/register';
+class RegisterBodyTeachers extends StatefulWidget {
+  static const routeName = '/register-teachers';
   @override
-  _RegisterBodyState createState() => _RegisterBodyState();
+  _RegisterBodyTeachersState createState() => _RegisterBodyTeachersState();
 }
 
-class _RegisterBodyState extends State<RegisterBody> {
+class _RegisterBodyTeachersState extends State<RegisterBodyTeachers> {
   final _emailController = TextEditingController();
   final _passController = TextEditingController();
   final _confpassController = TextEditingController();
@@ -39,6 +34,13 @@ class _RegisterBodyState extends State<RegisterBody> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               TextLogo(),
+              Text(
+                "Maestros",
+                style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.deepOrange[400],
+                    fontFamily: "Alatsi"),
+              ),
               TextField(
                 controller: _emailController,
                 style: TextStyle(
@@ -89,7 +91,7 @@ class _RegisterBodyState extends State<RegisterBody> {
                       Icons.person,
                       color: Colors.orange,
                     ),
-                    labelText: "Nombre completo",
+                    labelText: "Nombre Completo",
                     labelStyle:
                         TextStyle(color: Colors.orange[400], fontSize: 18)),
               ),
@@ -167,16 +169,14 @@ class _RegisterBodyState extends State<RegisterBody> {
                             _auth.currentUser.sendEmailVerification();
                             await databaseReference
                                 .collection('User')
-                                .doc("1")
+                                .doc()
                                 .set({
                               'id': user.user.uid,
                               'userName': _nameController.text,
-                              'teacher': false
+                              'teacher': true
                             }).then((value) => Navigator.of(context)
                                     .pushReplacementNamed(
-                                        LoginBackground.routeName));
-                            Navigator.of(context).pushReplacementNamed(
-                                LoginBackground.routeName);
+                                        LoginBackgroundTeachers.routeName));
                           } catch (e) {
                             print(e);
                           }
@@ -209,8 +209,8 @@ class _RegisterBodyState extends State<RegisterBody> {
                           fontFamily: "Alatsi"),
                     ),
                     onTap: () {
-                      Navigator.of(context)
-                          .pushReplacementNamed(LoginBackground.routeName);
+                      Navigator.of(context).pushReplacementNamed(
+                          LoginBackgroundTeachers.routeName);
                     },
                   ),
                 ],

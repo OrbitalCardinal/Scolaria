@@ -37,7 +37,6 @@ class GroupSettingsScreen extends StatelessWidget {
                 ListTile(
                   title: Text("Número de alumnos"),
                   subtitle: Text("12"),
-                  trailing: Icon(Icons.edit),
                 )
               ],
             ),

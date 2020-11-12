@@ -1,5 +1,9 @@
-import 'package:Scolaria/widgets/loginBackgroundTeachers.dart';
-import 'package:Scolaria/widgets/registerBody.dart';
+import 'dart:math';
+
+import 'package:Scolaria/teachers/main_teachers_screen.dart';
+import 'package:Scolaria/widgets/loginBackground.dart';
+import 'package:Scolaria/widgets/registerBodyTeachers.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'DividerAuth.dart';
@@ -9,16 +13,17 @@ import 'homePage.dart';
 import 'noAccountRegister.dart';
 import 'textLogo.dart';
 
-class LoginBody extends StatefulWidget {
+class LoginBodyTeachers extends StatefulWidget {
   @override
-  _LoginBodyState createState() => _LoginBodyState();
+  _LoginBodyTeachersState createState() => _LoginBodyTeachersState();
 }
 
-class _LoginBodyState extends State<LoginBody> {
+class _LoginBodyTeachersState extends State<LoginBodyTeachers> {
   final emailController = TextEditingController();
   final passController = TextEditingController();
 
   final _auth = FirebaseAuth.instance;
+  final databaseReference = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +38,13 @@ class _LoginBodyState extends State<LoginBody> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextLogo(),
+                Text(
+                  "Maestros",
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.deepOrange[400],
+                      fontFamily: "Alatsi"),
+                ),
                 SizedBox(height: size.height / 25),
                 TextField(
                   controller: emailController,
@@ -109,12 +121,28 @@ class _LoginBodyState extends State<LoginBody> {
                             .signInWithEmailAndPassword(
                                 email: emailController.text,
                                 password: passController.text)
-                            .then((user) {
+                            .then((user) async {
                           if (user.user.emailVerified) {
-                            Navigator.of(context).push(
-                                MaterialPageRoute(builder: (_loginBodyState) {
-                              return HomePage(emailController.text);
-                            }));
+                            // Check if it's teacher
+                            await databaseReference.collection("User").get().then((QuerySnapshot snapshot) {
+                              var document = snapshot.docs.where((element) => element["id"] == user.user.uid);
+                              bool isTeacher = document.first.data()['teacher'];
+                              String userId = document.first.data()['id'];
+                              if(isTeacher) {
+                                Navigator.of(context).pushReplacementNamed(MainTeachersScreen.routeName, arguments: {
+                                  'userId': userId 
+                                });
+                              } else {
+                                showDialog(context: context, child: AlertDialog(
+                                  content: Text("Esta intentando ingresar con una cuenta que no es de docente"),
+                                  actions: [
+                                    FlatButton(onPressed: () {
+                                      Navigator.of(context).pop();
+                                    }, child: Text("Ok"))
+                                  ],
+                                ));
+                              }
+                            });
                           } else {
                             print("Verifique su correo por favor");
                           }
@@ -159,8 +187,7 @@ class _LoginBodyState extends State<LoginBody> {
                       fontFamily: "Alatsi"),
                 ),
                 onTap: () {
-                  Navigator.of(context)
-                      .pushReplacementNamed(RegisterBody.routeName);
+                  Navigator.of(context).pushReplacementNamed(RegisterBodyTeachers.routeName);
                 },
               ),
             ],
@@ -170,13 +197,13 @@ class _LoginBodyState extends State<LoginBody> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "¿Eres un docente?",
+                "¿No eres docente?",
                 style: TextStyle(
                     fontSize: 18, color: Colors.black, fontFamily: "Alatsi"),
               ),
               GestureDetector(
                 child: Text(
-                  " Inicia sesión como maestro",
+                  " Inicia sesión como padre",
                   style: TextStyle(
                       fontSize: 18,
                       color: Colors.deepOrange[400],
@@ -184,7 +211,7 @@ class _LoginBodyState extends State<LoginBody> {
                 ),
                 onTap: () {
                   Navigator.pushReplacementNamed(
-                      context, LoginBackgroundTeachers.routeName);
+                      context, LoginBackground.routeName);
                 },
               ),
             ],

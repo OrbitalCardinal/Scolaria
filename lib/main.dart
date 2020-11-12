@@ -1,3 +1,8 @@
+import 'package:Scolaria/parents/inicio.dart';
+import 'package:Scolaria/widgets/loginBackground.dart';
+import 'package:Scolaria/widgets/loginBackgroundTeachers.dart';
+import 'package:Scolaria/widgets/registerBody.dart';
+import 'package:Scolaria/widgets/registerBodyTeachers.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -19,8 +24,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(),
       debugShowCheckedModeBanner: false,
+      routes: {
+        '/': (ctx) => LoginBackground(),
+        LoginBackgroundTeachers.routeName: (ctx) => LoginBackgroundTeachers(),
+        RegisterBodyTeachers.routeName: (ctx) => RegisterBodyTeachers(),
+        RegisterBody.routeName: (ctx) => RegisterBody(),
+        MainTeachersScreen.routeName: (ctx) => MainTeachersScreen(),
+      },
     );
   }
 }
@@ -43,6 +54,6 @@ class _MyHomePageState extends State<MyHomePage> {
         // body: RegisterBody()
         body: MainTeachersScreen(),
         );
-  }
+    }
 }
 
