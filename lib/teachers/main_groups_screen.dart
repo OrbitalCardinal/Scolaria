@@ -1,3 +1,4 @@
+import 'package:Scolaria/teachers/create_group_screen.dart';
 import 'package:Scolaria/teachers/main_teachers_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import './models/group_model.dart';
 import 'group_screen.dart';
 
 class MainGroupsScreen extends StatefulWidget {
+  static const routeName = '/MainGroupScreen';
   @override
   _MainGroupsScreenState createState() => _MainGroupsScreenState();
 }
@@ -78,26 +80,9 @@ class _MainGroupsScreenState extends State<MainGroupsScreen> {
       return;
     }
 
-    Group newGroup = Group(
-      id: Uuid().v4(),
-      code: Uuid().v4(),
-      name: _groupName.text,
-      activities: int.parse(_acitivitiesNumber.text),
-      teacherId: MainTeachersScreen.userId,
-      students: 0,
-    );
-
-    setState(() {
-      databaseReference.collection('Group').doc(newGroup.id).set({
-        'code': newGroup.code,
-        'name': newGroup.name,
-        'activities': newGroup.activities,
-        'teacherId': newGroup.teacherId,
-        'students': newGroup.students
-      }).then((value) {
-        groups.add(newGroup);
-        Navigator.of(context).pop();
-      });
+    Navigator.of(context).pushReplacementNamed(CreateGroupScreen.routeName, arguments: {
+      'groupName': _groupName.text,
+      'activitiesNumber':int.parse(_acitivitiesNumber.text),
     });
   }
 
@@ -134,7 +119,7 @@ class _MainGroupsScreenState extends State<MainGroupsScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Grupos(4)",
+                    "Grupos(${groups.length})",
                     style: TextStyle(color: Colors.grey[700], fontSize: 16),
                   ),
                   SizedBox(height: 5),
@@ -169,11 +154,16 @@ class _MainGroupsScreenState extends State<MainGroupsScreen> {
   }
 }
 
-class GroupTile extends StatelessWidget {
-  final Group group;
+class GroupTile extends StatefulWidget {
+  Group group;
 
   GroupTile({this.group});
 
+  @override
+  _GroupTileState createState() => _GroupTileState();
+}
+
+class _GroupTileState extends State<GroupTile> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -183,26 +173,25 @@ class GroupTile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              this.group.name,
+              this.widget.group.name,
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            Text("Código: " + this.group.code)
+            Text("Código: " + this.widget.group.code)
           ],
         ),
         trailing: InkWell(
           child: Icon(Icons.content_copy),
           onTap: () {
-            Clipboard.setData(new ClipboardData(text: group.id));
+            Clipboard.setData(new ClipboardData(text: widget.group.code));
             Scaffold.of(context).showSnackBar(SnackBar(
               content: Text("Código copiado al portapapeles"),
             ));
           },
         ),
         onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => GroupScreen(
-                    group: this.group,
-                  )));
+          Navigator.of(context).pushReplacementNamed(GroupScreen.routeName, arguments: {
+            'group': this.widget.group
+          });
         },
       ),
     );

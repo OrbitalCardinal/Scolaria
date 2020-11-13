@@ -5,6 +5,7 @@ import 'models/student_activity_model.dart';
 import 'models/student_model.dart';
 
 class StudentScreen extends StatelessWidget {
+  static const routeName = '/StudentScreen';
   final Student student;
   List<StudentActivity> studentActivities;
   final List<GroupActivity> groupActivities;

@@ -1,4 +1,10 @@
 import 'package:Scolaria/parents/inicio.dart';
+import 'package:Scolaria/teachers/announcements_screen.dart';
+import 'package:Scolaria/teachers/create_group_screen.dart';
+import 'package:Scolaria/teachers/group_screen.dart';
+import 'package:Scolaria/teachers/group_settings_screen.dart';
+import 'package:Scolaria/teachers/main_groups_screen.dart';
+import 'package:Scolaria/teachers/student_screen.dart';
 import 'package:Scolaria/widgets/loginBackground.dart';
 import 'package:Scolaria/widgets/loginBackgroundTeachers.dart';
 import 'package:Scolaria/widgets/registerBody.dart';
@@ -31,6 +37,12 @@ class MyApp extends StatelessWidget {
         RegisterBodyTeachers.routeName: (ctx) => RegisterBodyTeachers(),
         RegisterBody.routeName: (ctx) => RegisterBody(),
         MainTeachersScreen.routeName: (ctx) => MainTeachersScreen(),
+        CreateGroupScreen.routeName: (ctx) => CreateGroupScreen(),
+        MainGroupsScreen.routeName: (ctx) => MainGroupsScreen(),
+        GroupScreen.routeName: (ctx) => GroupScreen(),
+        StudentScreen.routeName: (ctx) => StudentScreen(),
+        AnnouncementsScreen.routeName: (ctx) => AnnouncementsScreen(),
+        GroupSettingsScreen.routeName: (ctx) => GroupSettingsScreen(),
       },
     );
   }

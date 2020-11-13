@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 class Group {
   final String id;
   final String code;
-  final String name;
+  String name;
   final int activities;
   final String teacherId;
   final int students;
