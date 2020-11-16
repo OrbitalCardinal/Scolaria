@@ -1,4 +1,3 @@
-import 'package:Scolaria/teachers/main_groups_screen.dart';
 import 'package:Scolaria/teachers/models/group_activity_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -138,12 +137,15 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
                   'teacherId': newGroup.teacherId,
                   'students': newGroup.students
                 }).then((value) {
+                  int index = 0;
                   newGroupActivities.forEach((element) async {
                     databaseReference.collection('GroupActivity').doc().set({
                       'name': element.name,
                       'weighting': element.weighting,
-                      'groupId': element.groupId
+                      'groupId': element.groupId,
+                      'activityNumber': index
                     });
+                    index+=1;
                   });
                   Navigator.of(context).pushNamedAndRemoveUntil(
                       MainTeachersScreen.routeName, (route) => false,

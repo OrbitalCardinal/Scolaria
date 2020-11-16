@@ -1,38 +1,48 @@
-import 'package:Scolaria/teachers/models/group_activity_model.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import 'models/student_activity_model.dart';
-import 'models/student_model.dart';
-
-class StudentScreen extends StatelessWidget {
+class StudentScreen extends StatefulWidget {
   static const routeName = '/StudentScreen';
-  final Student student;
-  List<StudentActivity> studentActivities;
-  final List<GroupActivity> groupActivities;
+  @override
+  _StudentScreenState createState() => _StudentScreenState();
+}
 
-  StudentScreen(
-      {@required this.student,
-      @required this.studentActivities,
-      @required this.groupActivities});
-
+class _StudentScreenState extends State<StudentScreen> {
+  final databaseReference = FirebaseFirestore.instance;
   @override
   Widget build(BuildContext context) {
+    final routeArgs = ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
+    final String studentName = routeArgs['studentName'];
+    final String groupId = routeArgs['groupId'];
+    Iterable<QueryDocumentSnapshot> databaseGroupActivities;
+    List<TextEditingController> textEditingList  = [];
+
+    void updateGrades() {
+      int index = 0;
+      databaseGroupActivities.forEach((element) {
+        databaseReference.collection('StudentActivity').doc(element.id).update({
+          'grade': double.parse(textEditingList[index].text)
+        });
+        index+=1;
+      });
+    }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal[300],
-        title: Text(
-          student.name,
-          style: TextStyle(fontSize: 17),
-        ),
+        title: Text(studentName),
         actions: [
           FlatButton(
-            child: Icon(Icons.save, color: Colors.white),
-            onPressed: () {},
-          ),
+            onPressed: updateGrades,
+            child: Icon(
+              Icons.save,
+              color: Colors.white,
+            ),
+          )
         ],
       ),
       body: Container(
-        padding: EdgeInsets.all(15),
+        padding: EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -47,64 +57,57 @@ class StudentScreen extends StatelessWidget {
             ),
             Expanded(
               child: Container(
-                child: ListView.builder(
-                  itemCount: this.studentActivities.length,
-                  itemBuilder: (context, index) {
-                    return GradeStudentTile(
-                      studentActivity: this.studentActivities[index],
-                      index: index,
-                      groupActivity: this.groupActivities[index],
+                child: StreamBuilder(
+                  stream: databaseReference
+                      .collection('StudentActivity')
+                      .snapshots(),
+                  builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+
+                    databaseGroupActivities =  snapshot.data.docs.where((element) => element.data()['groupId'] == groupId);
+
+                    return ListView.builder(
+                      itemCount: databaseGroupActivities.length,
+                      itemBuilder: (context, index) {
+                        textEditingList.add(new TextEditingController());
+
+                        return Card(
+                          elevation: 5,
+                          child: ListTile(
+                            contentPadding: EdgeInsets.all(20),
+                            title: Text(
+                              'Actividad ${index + 1}',
+                              style: TextStyle(
+                                  color: Colors.teal[300],
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            subtitle: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(databaseGroupActivities.toList()[index].data()['name']),
+                                TextField(
+                                  controller: textEditingList[index]..text = databaseGroupActivities.toList()[index].data()['grade'].toString(),
+                                decoration: InputDecoration(
+                                  labelText: "Calificación",
+                                ),
+                                keyboardType: TextInputType.number,
+                                ),
+                                
+                              ],
+                            ),
+                          ),
+                        );
+                      },
                     );
                   },
                 ),
               ),
-            )
+            ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class GradeStudentTile extends StatelessWidget {
-  final StudentActivity studentActivity;
-  final int index;
-  final GroupActivity groupActivity;
-
-  GradeStudentTile(
-      {@required this.studentActivity,
-      @required this.index,
-      @required this.groupActivity});
-
-  final _formKey = GlobalKey<FormState>();
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      child: Padding(
-        padding: EdgeInsets.all(5),
-        child: ListTile(
-          title: Text("Actividad " +
-              (index + 1).toString() +
-              " (" +
-              this.groupActivity.weighting.toString() +
-              "%)"),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(this.groupActivity.name),
-              Form(
-                key: _formKey,
-                child: TextFormField(
-                  initialValue: this.studentActivity.grade.toString(),
-                  decoration: InputDecoration(
-                    labelText: "Calificación",
-                  ),
-                  keyboardType: TextInputType.number,
-                ),
-              ),
-            ],
-          ),
         ),
       ),
     );
