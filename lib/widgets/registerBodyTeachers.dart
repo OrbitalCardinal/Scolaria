@@ -173,7 +173,8 @@ class _RegisterBodyTeachersState extends State<RegisterBodyTeachers> {
                                 .set({
                               'id': user.user.uid,
                               'userName': _nameController.text,
-                              'teacher': true
+                              'teacher': true,
+                              'email': _emailController.text
                             }).then((value) => Navigator.of(context)
                                     .pushReplacementNamed(
                                         LoginBackgroundTeachers.routeName));

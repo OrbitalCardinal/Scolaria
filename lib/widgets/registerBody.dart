@@ -171,7 +171,8 @@ class _RegisterBodyState extends State<RegisterBody> {
                                 .set({
                               'id': user.user.uid,
                               'userName': _nameController.text,
-                              'teacher': false
+                              'teacher': false,
+                              'email': _emailController.text
                             }).then((value) => Navigator.of(context)
                                     .pushReplacementNamed(
                                         LoginBackground.routeName));
