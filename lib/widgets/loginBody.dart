@@ -1,3 +1,5 @@
+import 'package:Scolaria/parents/seleccionAlumno.dart';
+import 'package:Scolaria/parents/studentScreen.dart';
 import 'package:Scolaria/widgets/loginBackgroundTeachers.dart';
 import 'package:Scolaria/widgets/registerBody.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -113,7 +115,8 @@ class _LoginBodyState extends State<LoginBody> {
                           if (user.user.emailVerified) {
                             Navigator.of(context).push(
                                 MaterialPageRoute(builder: (_loginBodyState) {
-                              return HomePage(emailController.text);
+                                  return studentScreen();
+                              //return HomePage(emailController.text);
                             }));
                           } else {
                             print("Verifique su correo por favor");

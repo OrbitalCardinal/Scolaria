@@ -1,4 +1,6 @@
 import 'package:Scolaria/parents/inicio.dart';
+import 'package:Scolaria/parents/seleccionAlumno.dart';
+import 'package:Scolaria/parents/studentScreen.dart';
 import 'package:Scolaria/teachers/announcements_screen.dart';
 import 'package:Scolaria/teachers/create_group_screen.dart';
 import 'package:Scolaria/teachers/group_screen.dart';
@@ -33,6 +35,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         '/': (ctx) => LoginBackground(),
+       //'/': (ctx) => studentScreen(),
+       // '/': (ctx) => seleccionAlumno(),
         LoginBackgroundTeachers.routeName: (ctx) => LoginBackgroundTeachers(),
         RegisterBodyTeachers.routeName: (ctx) => RegisterBodyTeachers(),
         RegisterBody.routeName: (ctx) => RegisterBody(),
