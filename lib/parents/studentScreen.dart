@@ -35,8 +35,27 @@ class _studentScreenState extends State<studentScreen> {
 
   @override
   Widget build(BuildContext context){
+   /*final routeArgs = ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
+    final String studentName = routeArgs['studentName'];
+    final String url = routeArgs['url'];
+    Iterable<QueryDocumentSnapshot> databaseStudent;
+    List<TextEditingController> textEditingList = [];
+
+    void upgradeStudent(){
+      int index = 0;
+      databaseStudent.forEach((element) {
+        databaseRef.collection('StudentInformation').doc(element.id).update({
+          'grade': double.parse(textEditingList[index].text)
+        });
+        index+=1;
+      });
+    }*/
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.orange,
+        title: Text('Selección de Alumno'),
+      ),
       backgroundColor: Colors.white,
       body: students.tempStud.isEmpty ? Center(child: Text('No existen alumnos registrados', style: TextStyle(color: Colors.black),),) : Container(
         child: ListView.builder(
