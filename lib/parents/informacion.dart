@@ -1,11 +1,11 @@
-import 'package:Scolaria/parents/models/loan.dart';
+import 'package:Scolaria/parents/models/Group_Model.dart';
 import 'package:flutter/material.dart';
 
 class Info extends StatelessWidget {
   
   final GlobalKey<AnimatedListState> _key = GlobalKey();
 
-  static List<Loan> tempLoans = [];
+  static List<GroupStudentModel> tempLoans = [];
 
   List<String> _items = [
     'Item 1',

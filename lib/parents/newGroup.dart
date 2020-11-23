@@ -1,20 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class NewLoan extends StatefulWidget {
+class NewGroup extends StatefulWidget {
   final Function addLoanFun;
-  NewLoan(this.addLoanFun);
+  NewGroup(this.addLoanFun);
 
   @override
-  _NewLoanState createState() => _NewLoanState();
+  _NewGroupState createState() => _NewGroupState();
 }
 
-class _NewLoanState extends State<NewLoan> {
-  final _nameController = TextEditingController();
+class _NewGroupState extends State<NewGroup> {
   final _codeGroupController = TextEditingController();
 
   void _submit(){
-    widget.addLoanFun(_nameController.text, _codeGroupController.text);
+    widget.addLoanFun(_codeGroupController.text);
   }
 
   @override
@@ -32,10 +31,6 @@ class _NewLoanState extends State<NewLoan> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               TextField(
-                decoration: InputDecoration(labelText: 'Nombre'),
-                controller: _nameController,
-              ),
-              TextField(
                 decoration: InputDecoration(labelText: 'Código de Grupo'),
                 controller: _codeGroupController,
               ),
@@ -45,7 +40,7 @@ class _NewLoanState extends State<NewLoan> {
                   Expanded(
                     child: FlatButton(
                       child: Text(
-                        'Agregar alumno',
+                        'Entrar a la Clase',
                         style: TextStyle(fontWeight: FontWeight.bold,
                         color: Colors.white),
                       ),
