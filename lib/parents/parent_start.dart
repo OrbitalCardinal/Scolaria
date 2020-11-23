@@ -1,7 +1,7 @@
 import 'package:Scolaria/parents/Student.dart';
-import 'package:Scolaria/parents/avisos.dart';
+import 'package:Scolaria/parents/annoucementsSubject.dart';
 import 'package:Scolaria/parents/materias.dart';
-import 'package:Scolaria/parents/models/loan.dart';
+import 'package:Scolaria/parents/models/Group_Model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -9,12 +9,12 @@ import 'package:Scolaria/parents/inicio.dart';
 
 class ParentStart extends StatelessWidget {
   static const routeName = 'parent_start';
-   static List<Loan> tempLoans = [];
+   static List<GroupStudentModel> tempLoans = [];
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 2,
       child: Scaffold(
         // backgroundColor: Theme.of(context).backgroundColor,
         appBar: PreferredSize(
@@ -26,29 +26,6 @@ class ParentStart extends StatelessWidget {
                 indicatorColor: Colors.white,
                 indicatorWeight: 2,
                 tabs: [
-                  Tab(
-                    child: Column(
-                      children: [
-                        SizedBox(height: 2,),
-                        Icon(
-                          Icons.book,
-                        ),
-                        Text('Historial')
-                      ],
-                    ),
-                    // text: 'Avisos',
-                  ),
-                  Tab(
-                    child: Column(
-                      children: [
-                        SizedBox(height: 2,),
-                        Icon(
-                          Icons.notifications,
-                        ),
-                        Text('Avisos')
-                      ],
-                    ),
-                  ),
                   Tab(
                     child: Column(
                       children: [
@@ -76,10 +53,8 @@ class ParentStart extends StatelessWidget {
           ),
         ),
         body: TabBarView(children: [
-          InicioPadre(),
-          Aviso(),
-          Materias(),
           Student(),
+          Materias(),
         ]),
       ),
     );

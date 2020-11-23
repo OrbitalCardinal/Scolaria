@@ -1,14 +1,8 @@
-import 'package:Scolaria/parents/seleccionAlumno.dart';
-import 'package:Scolaria/parents/studentScreen.dart';
+import 'package:Scolaria/parents/parent_start.dart';
 import 'package:Scolaria/widgets/loginBackgroundTeachers.dart';
 import 'package:Scolaria/widgets/registerBody.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'DividerAuth.dart';
-import '../facebookCircularButton.dart';
-import '../googleCircularButton.dart';
-import 'homePage.dart';
-import 'noAccountRegister.dart';
 import 'textLogo.dart';
 
 class LoginBody extends StatefulWidget {
@@ -113,11 +107,9 @@ class _LoginBodyState extends State<LoginBody> {
                                 password: passController.text)
                             .then((user) {
                           if (user.user.emailVerified) {
-                            Navigator.of(context).push(
-                                MaterialPageRoute(builder: (_loginBodyState) {
-                                  return studentScreen();
-                              //return HomePage(emailController.text);
-                            }));
+                            Navigator.of(context).pushReplacementNamed(
+                              ParentStart.routeName
+                            );
                           } else {
                             print("Verifique su correo por favor");
                           }

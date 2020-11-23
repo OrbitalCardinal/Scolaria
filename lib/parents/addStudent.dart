@@ -1,10 +1,6 @@
-import 'package:Scolaria/parents/loanScreen.dart';
 import 'package:Scolaria/parents/models/student.dart';
-import 'package:Scolaria/parents/newStudent.dart';
 import 'package:Scolaria/parents/seleccionAlumno.dart';
-import 'package:Scolaria/parents/studentScreen.dart';
 //import 'package:Scolaria/parents/seleccionAlumno.dart';
-import 'package:Scolaria/teachers/student_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

@@ -1,13 +1,11 @@
 import 'package:flutter/cupertino.dart';
 
-class Loan{
+class GroupStudentModel{
   final String id;
-  final String name;
   final String codeGroup;
 
-  Loan({
+  GroupStudentModel({
     @required this.id,
-    @required this.name,
     @required this.codeGroup
   });
 }

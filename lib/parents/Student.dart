@@ -1,12 +1,13 @@
-import 'package:Scolaria/parents/loanScreen.dart';
-import 'package:Scolaria/parents/models/loan.dart';
+import 'package:Scolaria/parents/main_student_subjects.dart';
+import 'package:Scolaria/parents/models/Group_Model.dart';
 import 'package:Scolaria/parents/parent_start.dart';
+import 'package:Scolaria/teachers/models/group_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Student extends StatelessWidget{
   static const routeName = 'Student';
-  static List<Loan> tempLoans = [];
+  static List<GroupStudentModel> tempLoans = [];
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +71,7 @@ class Student extends StatelessWidget{
           ),
         ),*/
         body: TabBarView(children: [
-          LoanScreen(),
+          StudentSubjects(),
           ParentStart(),
           Student(),
           //HistoryScreen(),

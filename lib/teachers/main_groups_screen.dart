@@ -99,6 +99,9 @@ class _MainGroupsScreenState extends State<MainGroupsScreen> {
           }
           databaseGroups = snapshot.data.docs.where((element) =>
               element.data()['teacherId'] == MainTeachersScreen.userId);
+          if(!databaseGroups.isEmpty){
+
+          }
           databaseGroups.forEach((element) {
             Group newGroup = Group(
                 id: element.id,
