@@ -108,7 +108,10 @@ class _LoginBodyState extends State<LoginBody> {
                             .then((user) {
                           if (user.user.emailVerified) {
                             Navigator.of(context).pushReplacementNamed(
-                              studentScreen.routeName
+                              studentScreen.routeName,
+                              arguments: {
+                                'userId':user.user.uid,
+                              }
                             );
                           } else {
                             print("Verifique su correo por favor");

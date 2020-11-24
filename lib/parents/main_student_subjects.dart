@@ -26,7 +26,7 @@ class _StudentSubjectsState extends State<StudentSubjects> {
   String nombremateria;
 
   void _startAddNewLoan(
-      BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+    BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
     final _codeGroupController = TextEditingController();
     showModalBottomSheet(
         isScrollControlled: true,

@@ -35,9 +35,9 @@ class _studentScreenState extends State<studentScreen> {
 
   @override
   Widget build(BuildContext context){
-   /*final routeArgs = ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
-    final String studentName = routeArgs['studentName'];
-    final String url = routeArgs['url'];
+    final routeArgs = ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
+    final String userId = routeArgs['userId'];
+    /*final String url = routeArgs['url'];
     Iterable<QueryDocumentSnapshot> databaseStudent;
     List<TextEditingController> textEditingList = [];
 

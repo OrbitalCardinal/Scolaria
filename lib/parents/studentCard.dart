@@ -1,3 +1,5 @@
+import 'package:Scolaria/parents/parent_start.dart';
+import 'package:Scolaria/parents/subject_Details.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -67,6 +69,12 @@ class studentCard extends StatelessWidget{
             ),
           ],
         ),
+        onTap: (){
+          Navigator.of(context).pushReplacementNamed(ParentStart.routeName,
+          arguments: {
+            'idStudent': id,
+          });
+        },
       ),
     );
   }

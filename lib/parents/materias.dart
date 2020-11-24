@@ -1,4 +1,5 @@
 
+import 'package:Scolaria/widgets/loginBackground.dart';
 import 'package:flutter/material.dart';
 
 class Materias extends StatelessWidget {
@@ -18,14 +19,17 @@ class Materias extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  "Correo: ",
-                  style: TextStyle(fontSize: 20),
+                Container(
+                  padding: EdgeInsets.all(15),
+                  child: Text(
+                    "Correo: cesarhdzh18@gmail.com",
+                    style: TextStyle(fontSize: 20),
+                  ),
                 ),
                 RaisedButton(
                   child: Text("Cerrar sesión"),
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    Navigator.of(context).pushReplacementNamed(LoginBackground.routeName);
                   },)
               ],
             ),

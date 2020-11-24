@@ -9,10 +9,13 @@ import 'package:Scolaria/parents/inicio.dart';
 
 class ParentStart extends StatelessWidget {
   static const routeName = 'parent_start';
-   static List<GroupStudentModel> tempLoans = [];
+  
 
   @override
   Widget build(BuildContext context) {
+    final routeArgs =
+              ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
+          final String idStud = routeArgs['idStudent'];
     return DefaultTabController(
       length: 2,
       child: Scaffold(
