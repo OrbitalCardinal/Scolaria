@@ -1,4 +1,6 @@
 import 'package:Scolaria/parents/annoucementsSubject.dart';
+import 'package:Scolaria/parents/seleccionAlumno.dart';
+import 'package:Scolaria/parents/studentScreen.dart';
 import 'package:Scolaria/parents/subject_Details.dart';
 import 'package:Scolaria/teachers/announcements_screen.dart';
 import 'package:Scolaria/teachers/create_group_screen.dart';
@@ -49,6 +51,8 @@ class MyApp extends StatelessWidget {
         ParentStart.routeName: (ctx) => ParentStart(),
         SubjectActivity.routeName: (ctx) => SubjectActivity(), 
         AnnouncementsSubject.routeName: (ctx) => AnnouncementsSubject(),
+        seleccionAlumno.routeName: (ctx) => seleccionAlumno(),
+        studentScreen.routeName: (ctx) => studentScreen()
       },
     );
   }

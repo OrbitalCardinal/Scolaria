@@ -1,4 +1,4 @@
-import 'package:Scolaria/parents/parent_start.dart';
+import 'package:Scolaria/parents/studentScreen.dart';
 import 'package:Scolaria/widgets/loginBackgroundTeachers.dart';
 import 'package:Scolaria/widgets/registerBody.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -108,7 +108,7 @@ class _LoginBodyState extends State<LoginBody> {
                             .then((user) {
                           if (user.user.emailVerified) {
                             Navigator.of(context).pushReplacementNamed(
-                              ParentStart.routeName
+                              studentScreen.routeName
                             );
                           } else {
                             print("Verifique su correo por favor");

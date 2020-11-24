@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
 
 class seleccionAlumno extends StatefulWidget {
+  static const routeName ='seleccionalumno';
   @override
   _seleccionAlumno createState() => _seleccionAlumno();
   final FirebaseStorage storage = FirebaseStorage(app: Firestore.instance.app,
